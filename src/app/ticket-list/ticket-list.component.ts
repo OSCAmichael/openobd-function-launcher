@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { TimeagoModule } from 'ngx-timeago';
 import { ModalService } from '../modal/modal.service';
 
@@ -12,15 +12,13 @@ import { ModalService } from '../modal/modal.service';
 	styleUrl: './ticket-list.component.scss',
 })
 export class TicketListComponent implements OnInit {
+	private httpClient = inject(HttpClient);
+	private modalService = inject<ModalService>(ModalService);
+
 	tickets: Ticket[] = [];
 	loading = false;
 	// The 'live' property is used by the timeago pipe in the template to auto-update.
 	live = true;
-
-	constructor(
-		private httpClient: HttpClient,
-		@Inject(ModalService) private modalService: ModalService,
-	) {}
 
 	ngOnInit(): void {
 		this.loading = true;
@@ -44,7 +42,7 @@ export class TicketListComponent implements OnInit {
 			closable: false,
 		});
 		this.httpClient.post(`http://localhost:3000/api/start`, { ticketNumber }).subscribe(
-			(data) => {
+			() => {
 				this.modalService.open({
 					type: 'success',
 					title: 'Connection Requested',

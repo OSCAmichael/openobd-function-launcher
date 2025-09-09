@@ -28,7 +28,7 @@
 						</td>
 						<td>
 							@if (ticket.connection_id) {
-								<div class="openobd" (click)="requestStart(ticket.ticket_number)">Connect OpenOBD</div>
+								<button class="openobd" (click)="requestStart(ticket.ticket_number)">Connect OpenOBD</button>
 							} @else {
 								<div class="openobd">OpenOBD not available</div>
 							}

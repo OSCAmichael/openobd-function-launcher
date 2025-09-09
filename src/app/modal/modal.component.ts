@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -10,12 +10,12 @@ import { ModalService } from './modal.service';
 	styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
+	modalService = inject(ModalService);
+
 	@HostBinding('style.display')
 	get display() {
 		return this.modalService.config() ? 'block' : 'none';
 	}
-
-	constructor(public modalService: ModalService) {}
 
 	close = () => this.modalService.close();
 }
