@@ -1,26 +1,26 @@
-type Customer = {
+interface Customer {
 	id: string;
 	company_name: string;
-};
+}
 
-type Operator = {
+interface Operator {
 	id: string;
 	given_name: string;
-};
+}
 
-type VehicleMake = {
+interface VehicleMake {
 	id: number;
 	name: string;
-};
+}
 
-type VehicleModel = {
+interface VehicleModel {
 	id: number;
 	make_id: number;
 	name: string;
 	make?: VehicleMake;
-};
+}
 
-type Ticket = {
+interface Ticket {
 	id: string;
 	customer_id: string;
 	operator_id: string | null;
@@ -33,4 +33,4 @@ type Ticket = {
 	customer?: Customer;
 	operator?: Operator;
 	vehicleModel?: VehicleModel;
-};
+}
