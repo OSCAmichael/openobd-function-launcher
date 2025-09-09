@@ -1,0 +1,41 @@
+<div class="ticket-list-container">
+	@if (loading) {
+		<div class="loading-overlay">
+			<div class="loading-spinner"></div>
+		</div>
+	}
+	@if (!loading) {
+		<table class="ticket-table">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>Customer</th>
+					<th>Vehicle</th>
+					<th>Created</th>
+					<th>Operator</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (ticket of tickets; track ticket.id) {
+					<tr [ngClass]="{ disabled: !ticket.connection_id }">
+						<td>{{ ticket.ticket_number }}</td>
+						<td>{{ ticket.customer?.company_name }}</td>
+						<td>{{ ticket.vehicleModel?.make?.name }} {{ ticket.vehicleModel?.name }}</td>
+						<td>{{ createdAt(ticket.created_at) | timeago: live }}</td>
+						<td>
+							<div class="operator">{{ ticket.operator?.given_name }}</div>
+						</td>
+						<td>
+							@if (ticket.connection_id) {
+								<div class="openobd" (click)="requestStart(ticket.ticket_number)">Connect OpenOBD</div>
+							} @else {
+								<div class="openobd">OpenOBD not available</div>
+							}
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+</div>

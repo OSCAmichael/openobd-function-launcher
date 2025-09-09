@@ -1,0 +1,140 @@
+.ticket-list-container {
+	padding: 20px;
+	font-family: 'Arial', sans-serif;
+}
+
+.loading-spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px; /* Adjust as needed */
+}
+
+.spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #333;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	overflow: hidden; /* Ensures rounded corners are applied to content */
+}
+
+th,
+td {
+	text-align: left;
+	padding: 12px 15px;
+	border-bottom: 1px solid #ddd;
+	user-select: none;
+}
+
+th {
+	background-color: #f2f2f2;
+	color: #333;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+tr:not(.disabled):hover {
+	background-color: #eee;
+}
+
+.operator {
+	padding: 8px 12px;
+	border: none;
+	border-radius: 4px;
+	font-size: 0.9em;
+	max-width: 64px;
+	text-align: center;
+}
+
+tr:not(.disabled) > td > .openobd {
+	background-color: #e50080;
+	color: white;
+	padding: 8px 12px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 0.9em;
+	transition: background-color 0.3s ease;
+	width: 128px;
+	text-align: center;
+
+	&:hover {
+		background-color: #a5005d;
+	}
+
+	&:active {
+		background-color: #790044;
+	}
+}
+
+tr.disabled > td > div.openobd {
+	cursor: not-allowed;
+}
+
+tr.disabled > td {
+	font-size: 0.95em;
+	color: #999;
+	font-style: italic;
+}
+
+tr:not(.disabled) td {
+	color: #333;
+	font-size: 0.95em;
+}
+
+.ticket-status {
+	padding: 5px 10px;
+	border-radius: 15px;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block; /* To apply padding and border-radius correctly */
+}
+
+.status-open {
+	background-color: #e0f7fa;
+	color: #00796b;
+}
+
+.status-closed {
+	background-color: #ffe0b2;
+	color: #e65100;
+}
+
+.status-pending {
+	background-color: #fffde7;
+	color: #fbc02d;
+}
+
+.status-resolved {
+	background-color: #e8f5e9;
+	color: #388e3c;
+}
+
+.ticket-actions {
+	display: flex;
+	gap: 10px;
+}

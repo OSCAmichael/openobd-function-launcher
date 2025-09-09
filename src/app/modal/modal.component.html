@@ -1,0 +1,18 @@
+@if (modalService.config(); as config) {
+	<div class="modal-overlay" (click)="close()">
+		<div class="modal-content" [ngClass]="config.type" (click)="$event.stopPropagation()">
+			<div class="modal-header">
+				<h2>{{ config.title }}</h2>
+				<button *ngIf="config.closable == undefined || config.closable == true" class="close-button" (click)="close()" aria-label="Close">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>{{ config.message }}</p>
+			</div>
+			<div class="modal-footer">
+				<button *ngIf="config.closable == undefined || config.closable == true" class="ok-button" (click)="close()">OK</button>
+			</div>
+		</div>
+	</div>
+}
